@@ -1,5 +1,14 @@
+/*
+ * @Author: HanRui(JoyNop)
+ * @Date: 2021-06-07 15:06:47
+ * @LastEditors: HanRui(JoyNop)
+ * @LastEditTime: 2021-06-08 15:29:22
+ * @Description: file content
+ * @FilePath: /vue3-ts/src/router/index.ts
+ */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
+import { App } from 'vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,4 +31,11 @@ const router = createRouter({
   routes
 })
 
+// export default router
+
+export function setupRouter(app: App) {
+  app.use(router)
+  // 创建路由守卫
+  // createRouterGuards(router)
+}
 export default router
