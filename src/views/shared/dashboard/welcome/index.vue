@@ -1,0 +1,86 @@
+<!--
+ * @Author: HanRui(JoyNop)
+ * @Date: 2021-06-07 09:53:35
+ * @LastEditors: HanRui(JoyNop)
+ * @LastEditTime: 2021-06-09 11:02:32
+ * @Description: file content
+ * @FilePath: /vue3-ts/src/views/shared/dashboard/welcome/index.vue
+-->
+<template>
+  <div>
+    <div class="box">
+      <img src="~@/assets/analysis.svg" />
+      <a-descriptions title="系统信息" bordered>
+        <a-descriptions-item key="IP" label="IP">
+          {{ userInfo.IP }}
+        </a-descriptions-item>
+        <a-descriptions-item v-for="(value, key) in browserInfo" :key="key" :label="key">
+          {{ value }}
+        </a-descriptions-item>
+        <a-descriptions-item label="网络状态">
+          <a-badge :status="online ? 'processing' : 'default'" :text="online ? '在线' : '离线'" />
+        </a-descriptions-item>
+      </a-descriptions>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, watchEffect } from 'vue'
+import { Descriptions, Badge } from 'ant-design-vue'
+import { SettingOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons-vue'
+import HuaweiCharge from '@/components/lockscreen/huawei-charge.vue'
+import BrowserType from '@/utils/browser-type'
+
+import { useOnline } from '@/hooks/useOnline'
+import { useStore } from '@/store'
+// import performanceMonitor from '@/utils/performanceMonitor'
+
+export default defineComponent({
+  name: 'Welcome',
+  components: {
+    HuaweiCharge,
+    [Badge.name]: Badge,
+    [Descriptions.name]: Descriptions,
+    [Descriptions.Item.name]: Descriptions.Item,
+    SettingOutlined,
+    EditOutlined,
+    EllipsisOutlined
+  },
+  setup() {
+    const userInfo = useStore().getters['user/userInfo']
+    // 是否联网
+    const { online } = useOnline()
+    // 获取电池信息
+
+    // 获取浏览器信息
+    const browserInfo = ref(BrowserType('zh-cn'))
+
+    // console.log(performanceMonitor.getPerformanceData(), 'performanceMonitor')
+
+    return {
+      userInfo,
+      browserInfo,
+      online
+    }
+  }
+})
+</script>
+
+<style lang="less" scoped>
+.box {
+  width: 100%;
+  height: calc(100vh - 280px);
+  display: flex;
+  flex-direction: column;
+
+  img {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .ant-form {
+    flex: 2;
+  }
+}
+</style>

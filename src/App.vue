@@ -2,37 +2,71 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-06-07 15:06:47
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-06-07 15:21:25
+ * @LastEditTime: 2021-06-08 18:12:37
  * @Description: file content
  * @FilePath: /vue3-ts/src/App.vue
 -->
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <config-provider v-show="!isLock" :locale="zhCN">
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </config-provider>
+  <transition name="slide-up">
+    <lock-screen v-if="isLock && $route.name != 'login'" />
+  </transition>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { defineComponent, computed, onMounted, onUnmounted } from 'vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import { ConfigProvider } from 'ant-design-vue'
+import { LockScreen } from '@/components/lockscreen'
+import { useStore } from '@/store'
+import { useRoute } from 'vue-router'
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  name: 'App',
+  components: { ConfigProvider, LockScreen },
+  setup() {
+    const route = useRoute()
+    const store = useStore()
+    const isLock = computed(() => store.state.lockscreen.isLock)
+    const lockTime = computed(() => store.state.lockscreen.lockTime)
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    let timer: any
 
-    &.router-link-exact-active {
-      color: #42b983;
+    const timekeeping = () => {
+      clearInterval(timer)
+      if (route.name == 'login' || isLock.value) return
+      // 设置不锁屏
+      store.commit('lockscreen/setLock', false)
+      // 重置锁屏时间
+      store.commit('lockscreen/setLockTime')
+      timer = setInterval(() => {
+        // 锁屏倒计时递减
+        store.commit('lockscreen/setLockTime', lockTime.value - 1)
+        if (lockTime.value <= 0) {
+          // 设置锁屏
+          store.commit('lockscreen/setLock', true)
+          return clearInterval(timer)
+        }
+        // console.log(lockTime.value, '锁屏倒计时')
+      }, 1000)
+    }
+
+    onMounted(() => {
+      document.addEventListener('mousedown', timekeeping)
+    })
+
+    onUnmounted(() => {
+      document.removeEventListener('mousedown', timekeeping)
+    })
+
+    return {
+      zhCN,
+      isLock
     }
   }
-}
-</style>
+})
+</script>

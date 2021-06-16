@@ -2,7 +2,7 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-06-07 15:06:47
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-06-07 15:28:04
+ * @LastEditTime: 2021-06-08 17:15:09
  * @Description: file content
  * @FilePath: /vue3-ts/babel.config.js
  */
