@@ -2,7 +2,7 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-07-09 10:09:16
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 15:46:42
+ * @LastEditTime: 2021-08-02 17:43:14
  * @Description: file content
  * @FilePath: /blast-web/src/router/common.ts
  */

@@ -2,7 +2,7 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-08-02 10:58:51
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 16:04:31
+ * @LastEditTime: 2021-08-02 17:46:32
  * @Description: file content
  * @FilePath: /blast-web/src/router/index.ts
  */
@@ -14,19 +14,22 @@ import common from '@/router/common'
 import shared from './modules/shared'
 import { errorRoutes } from './modules/error'
 
+import dashboard from './modules/dashboard'
+
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
     redirect: '/dashboard',
-    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
+    // component: Home,
     meta: {
       title: '首页'
-    },
-    children: [...common]
+    }
+    // children: [...common]
   },
+
+  ...common,
   ...shared,
-  // ...special,
   errorRoutes,
   {
     path: '/about',

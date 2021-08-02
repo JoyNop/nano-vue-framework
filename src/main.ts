@@ -2,9 +2,9 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-08-02 10:58:51
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 14:39:54
+ * @LastEditTime: 2021-08-02 17:46:18
  * @Description: file content
- * @FilePath: /blast-1/src/main.ts
+ * @FilePath: /blast-web/src/main.ts
  */
 import { createApp } from 'vue'
 import App from './App.vue'

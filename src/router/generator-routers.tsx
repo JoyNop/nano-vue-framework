@@ -3,7 +3,6 @@ import router from '@/router/index'
 import { routes } from '@/router/index'
 import { notFound } from '@/router/modules/error'
 import { Empty } from 'ant-design-vue'
-import common from '@/router/common'
 import { RouteRecordRaw } from 'vue-router'
 import SpecialDesign from '@/views/special/design/design.vue'
 
@@ -135,7 +134,7 @@ export const generatorDynamicRouter = (): Promise<RouteRecordRaw[]> => {
           }
         })
         const layout = routes.find((item) => item.name == 'Layout')!
-        layout.children = [...common, ...routeList]
+        layout.children = [...routeList]
         // const routes = [...common,...routeList]
         // routes.forEach(item => router.addRoute('Layout', item))
         router.addRoute(layout)
@@ -216,7 +215,7 @@ export const generatorDynamicRouter1 = (): Promise<RouteRecordRaw[]> => {
       }
     })
     const layout = routes.find((item) => item.name == 'Layout')!
-    layout.children = [...common, ...routeList]
+    layout.children = [...routeList]
     // const routes = [...common,...routeList]
     // routes.forEach(item => router.addRoute('Layout', item))
     router.addRoute(layout)

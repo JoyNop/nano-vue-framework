@@ -2,13 +2,12 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-08-02 10:58:51
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 11:03:08
+ * @LastEditTime: 2021-08-02 17:23:56
  * @Description: file content
- * @FilePath: /blast-1/src/views/Home.vue
+ * @FilePath: /blast-web/src/views/Home.vue
 -->
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
