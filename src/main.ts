@@ -2,17 +2,21 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-08-02 10:58:51
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 11:11:42
+ * @LastEditTime: 2021-08-02 14:39:54
  * @Description: file content
  * @FilePath: /blast-1/src/main.ts
  */
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router, { setupRouter } from './router'
+import { setupStore } from '@/store'
 import { setupAntd } from './plugins/ant-design-vue'
 const app = createApp(App)
 
 setupAntd(app)
-
-app.use(store).use(router).mount('#app')
+// 挂载vuex状态管理
+setupStore(app)
+// 挂载路由
+setupRouter(app)
+// 路由准备就绪后挂载APP实例
+router.isReady().then(() => app.mount('#app'))

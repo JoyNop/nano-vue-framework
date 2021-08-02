@@ -80,6 +80,38 @@ module.exports = {
           parallel: true
         })
       )
+      config.optimization = {
+        splitChunks: {
+          cacheGroups: {
+            common: {
+              name: 'chunk-common',
+              chunks: 'initial',
+              minChunks: 2,
+              maxInitialRequests: 5,
+              minSize: 0,
+              priority: 1,
+              reuseExistingChunk: true,
+              enforce: true
+            },
+            vendors: {
+              name: 'chunk-vendors',
+              test: /[\\/]node_modules[\\/]/,
+              chunks: 'initial',
+              priority: 2,
+              reuseExistingChunk: true,
+              enforce: true
+            },
+            antd: {
+              name: 'chunk-core-ui',
+              test: /[\\/]node_modules[\\/]ant-design-vue[\\/]/,
+              chunks: 'all',
+              priority: 3,
+              reuseExistingChunk: true,
+              enforce: true
+            }
+          }
+        }
+      }
     }
   },
 
