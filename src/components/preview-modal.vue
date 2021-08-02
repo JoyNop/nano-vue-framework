@@ -177,7 +177,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="less">
 .preview-modal {
   position: fixed;
   top: 0;

@@ -56,7 +56,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .split-wrapper {
   display: flex;
   width: 100%;

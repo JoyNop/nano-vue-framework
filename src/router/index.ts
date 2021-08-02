@@ -2,21 +2,32 @@
  * @Author: HanRui(JoyNop)
  * @Date: 2021-08-02 10:58:51
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 14:35:53
+ * @LastEditTime: 2021-08-02 16:04:31
  * @Description: file content
- * @FilePath: /blast-1/src/router/index.ts
+ * @FilePath: /blast-web/src/router/index.ts
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import { App } from 'vue'
 import { createRouterGuards } from './router-guards'
+import common from '@/router/common'
+import shared from './modules/shared'
+import { errorRoutes } from './modules/error'
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    redirect: '/dashboard',
+    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
+    meta: {
+      title: '首页'
+    },
+    children: [...common]
   },
+  ...shared,
+  // ...special,
+  errorRoutes,
   {
     path: '/about',
     name: 'About',

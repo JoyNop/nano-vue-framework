@@ -1,22 +1,19 @@
 /*
  * @Author: HanRui(JoyNop)
- * @Date: 2021-08-02 09:23:35
+ * @Date: 2021-08-02 15:20:30
  * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 11:00:44
+ * @LastEditTime: 2021-08-02 16:16:56
  * @Description: file content
- * @FilePath: /blast-1/.eslintrc.js
+ * @FilePath: /blast-web/.eslintrc.js
  */
 module.exports = {
   root: true,
-
   env: {
     browser: true,
     node: true,
     es6: true
   },
-
   parser: 'vue-eslint-parser',
-
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -26,20 +23,29 @@ module.exports = {
       jsx: true
     }
   },
-
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:prettier/recommended'
   ],
-
   rules: {
+    'vue/no-unused-components': 'off',
+    'vue/no-unused-vars': 'off',
     'vue/no-v-for-template-key-on-child': 'off',
     'vue/custom-event-name-casing': 'off',
+    // 'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/attribute-hyphenation': 'off',
+    'vue/require-default-prop': 'off',
+
     'space-before-function-paren': 'off',
     'no-unused-vars': 'off',
+
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -53,13 +59,13 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'no-console': 'off',
-    'no-debugger': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/html-self-closing': [
       'error',
       {
         html: {
-          'void': 'always',
+          void: 'always',
           normal: 'never',
           component: 'always'
         },
@@ -67,12 +73,5 @@ module.exports = {
         math: 'always'
       }
     ]
-  },
-
-  'extends': [
-    'plugin:vue/essential',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:prettier/recommended'
-  ]
+  }
 }

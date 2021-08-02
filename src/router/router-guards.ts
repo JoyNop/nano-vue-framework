@@ -53,7 +53,7 @@ export function createRouterGuards(router: Router) {
         // if (store.getters['asyncRoute/menus'].length === 0) {
         // generate dynamic router
         // 防抖获取菜单
-        // isGetMenus({ to, from, next, hasRoute })
+        isGetMenus({ to, from, next, hasRoute })
 
         if (allowList.includes(to.name as string) || hasRoute) {
           // 在免登录名单，直接进入

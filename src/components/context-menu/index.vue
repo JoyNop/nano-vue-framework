@@ -108,7 +108,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="less">
 .content-menu {
   .ant-menu {
     position: fixed;

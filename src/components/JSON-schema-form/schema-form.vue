@@ -223,7 +223,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .ant-form {
   .ant-input-group {
     display: flex;

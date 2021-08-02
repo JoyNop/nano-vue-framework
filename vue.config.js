@@ -22,7 +22,7 @@ module.exports = {
       sass: {
         additionalData: `
         @use 'sass:math';
-        @import "@/styles/global.scss";`
+        @import "@/styles/global.less";`
       }
     }
   },
