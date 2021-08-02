@@ -3605,6 +3605,11 @@ date-fns@^1.27.2:
   resolved "https://registry.nlark.com/date-fns/download/date-fns-1.30.1.tgz?cache=0&sync_timestamp=1627020353586&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdate-fns%2Fdownload%2Fdate-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha1-LnG/CxGRU9u0zE6I2epaz7UNwFw=
 
+dayjs@^1.10.6:
+  version "1.10.6"
+  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha1-KIsqqC8thBimydTfWJjAc3rQKmM=
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
   resolved "https://registry.nlark.com/debug/download/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
