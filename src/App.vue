@@ -1,9 +1,18 @@
+<!--
+ * @Author: HanRui(JoyNop)
+ * @Date: 2021-08-02 10:58:51
+ * @LastEditors: HanRui(JoyNop)
+ * @LastEditTime: 2021-08-02 11:04:03
+ * @Description: file content
+ * @FilePath: /blast-1/src/App.vue
+-->
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <style lang="less">
