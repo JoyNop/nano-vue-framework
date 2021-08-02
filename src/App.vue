@@ -1,39 +1,46 @@
-<!--
- * @Author: HanRui(JoyNop)
- * @Date: 2021-08-02 10:58:51
- * @LastEditors: HanRui(JoyNop)
- * @LastEditTime: 2021-08-02 11:04:03
- * @Description: file content
- * @FilePath: /blast-1/src/App.vue
--->
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-
-    <router-view />
-  </div>
+  <a-locale-provider :locale="zh_CN">
+    <div id="app">
+      <img src="./assets/logo.png" />
+      <div>
+        <p>
+          If Ant-Design-Vue is successfully added to this project, you'll see an
+          <code v-text="'<a-button>'"></code>
+          <code v-text="'<a-pagination>'"></code>
+          below
+        </p>
+        <a-button type="primary">Primary</a-button>
+        <a-pagination size="small" :total="50" showSizeChanger showQuickJumper />
+      </div>
+      <HelloWorld msg="Welcome to Your Vue.js App" />
+    </div>
+  </a-locale-provider>
 </template>
 
-<style lang="less">
+<script>
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'app',
+  data() {
+    return {
+      zh_CN
+    }
+  },
+  components: {
+    HelloWorld
+  }
+}
+</script>
+
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  margin-top: 60px;
 }
 </style>
