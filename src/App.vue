@@ -1,20 +1,9 @@
 <template>
-  <a-locale-provider :locale="zh_CN">
-    <div id="app">
-      <img src="./assets/logo.png" />
-      <div>
-        <p>
-          If Ant-Design-Vue is successfully added to this project, you'll see an
-          <code v-text="'<a-button>'"></code>
-          <code v-text="'<a-pagination>'"></code>
-          below
-        </p>
-        <a-button type="primary">Primary</a-button>
-        <a-pagination size="small" :total="50" showSizeChanger showQuickJumper />
-      </div>
-      <HelloWorld msg="Welcome to Your Vue.js App" />
-    </div>
-  </a-locale-provider>
+  <config-provider :locale="zh_CN">
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </config-provider>
 </template>
 
 <script>
